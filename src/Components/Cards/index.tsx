@@ -5,8 +5,6 @@ const Cards = () => {
   return (
     <CardsContainer>
       <Card />
-      <Card />
-      <Card />
     </CardsContainer>
   );
 };

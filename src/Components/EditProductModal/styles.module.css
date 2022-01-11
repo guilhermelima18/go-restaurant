@@ -1,0 +1,71 @@
+.modalContainer {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalDisabled {
+  display: none;
+}
+
+.modalContainer form {
+  background-color: var(--card-background);
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.modalContainer form h1 {
+  margin-bottom: 1.5rem;
+}
+
+.modalContainer form .buttonClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.modalContainer form .formGroup {
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
+}
+
+.modalContainer form .inputGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalContainer form .inputGroup + .inputGroup {
+  margin-left: 10px;
+}
+
+.modalContainer form .inputGroup label {
+  margin-bottom: 5px;
+}
+
+.modalContainer form .inputGroup input {
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  padding: 0 10px;
+}
+
+.modalContainer form button {
+  margin-top: 4rem;
+}

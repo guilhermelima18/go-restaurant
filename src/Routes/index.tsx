@@ -11,6 +11,7 @@ const AppRoutes = () => {
       <div className="container">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/edit-product/:id" element={<Dashboard />} />
         </Routes>
       </div>
     </BrowserRouter>
