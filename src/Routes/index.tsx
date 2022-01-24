@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "../Components/Header";
-import Dashboard from "../Pages/Dashboard";
-import { GlobalStyle } from "../Styles/GlobalStyle";
+import Header from "../components/Header";
+import Dashboard from "../pages/Dashboard";
+import { GlobalStyle } from "../styles/GlobalStyle";
 
 const AppRoutes = () => {
   return (

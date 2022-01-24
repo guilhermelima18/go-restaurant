@@ -1,4 +1,4 @@
-import Cards from "../../Components/Cards";
+import Cards from "../../components/Cards";
 import { DashboardContainer } from "./styles";
 
 const Dashboard = () => {

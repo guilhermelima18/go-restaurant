@@ -1,5 +1,5 @@
 import { AiFillPlusSquare } from "react-icons/ai";
-import logoIcon from "../../Assets/logo-go-restaurant.svg";
+import logoIcon from "../../assets/logo-go-restaurant.svg";
 import NewPlateButton from "../NewPlateButton";
 import {
   HeaderContainer,

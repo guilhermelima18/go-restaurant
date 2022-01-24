@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import api from "../../Services/api";
+import api from "../../services/api";
 import NewPlateButton from "../NewPlateButton";
 import styles from "./styles.module.css";
 
