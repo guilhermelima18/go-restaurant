@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
-import api from "../../../services/api";
+import { useNavigate } from "react-router-dom";
 import { formatPrice } from "../../../utils/format";
 import Button from "../../Button";
 import EditProductModal from "../../EditProductModal";
@@ -18,27 +17,13 @@ interface FoodsProps {
   priceFormatted: number;
 }
 
-const Card = () => {
-  const [foods, setFoods] = useState<FoodsProps[]>([]);
+type Foods = {
+  foods: FoodsProps[];
+};
+
+const Card = ({ foods }: Foods) => {
+  const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  useEffect(() => {
-    const loadFoods = async () => {
-      const response = await api.get("/foods");
-
-      if (response) {
-        if (response.status === 200) {
-          const foodsFormatted = response.data.map((food: any) => ({
-            ...food,
-            priceFormatted: Number(food.price),
-          }));
-          setFoods(foodsFormatted);
-        }
-      }
-    };
-
-    loadFoods();
-  }, []);
 
   return (
     <>
@@ -55,10 +40,13 @@ const Card = () => {
             </CardContent>
             <CardFooter>
               <div>
-                <Button onClick={() => setModalIsOpen(true)}>
-                  <Link to={`/edit-product/${id}`}>
-                    <AiOutlineEdit fontSize={20} />
-                  </Link>
+                <Button
+                  onClick={() => {
+                    navigate(`/edit-product/${id}`);
+                    setModalIsOpen(true);
+                  }}
+                >
+                  <AiOutlineEdit fontSize={20} />
                 </Button>
                 <Button>
                   <IoIosRemoveCircleOutline fontSize={20} />

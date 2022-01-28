@@ -6,6 +6,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px 8px 0px 0px;
+  margin: 1rem 0;
 
   img {
     width: 100%;

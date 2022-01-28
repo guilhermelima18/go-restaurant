@@ -15,18 +15,10 @@
   display: none;
 }
 
-.modalContainer form {
-  background-color: var(--card-background);
-  width: 50%;
-  position: relative;
+.modalContainer form .formGroup {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4rem 2rem;
-}
-
-.modalContainer form h1 {
-  margin-bottom: 1.5rem;
+  margin: 1rem 0;
 }
 
 .modalContainer form .buttonClose {
@@ -42,30 +34,5 @@
 .modalContainer form .formGroup {
   width: 100%;
   display: flex;
-  margin: 10px 0;
-}
-
-.modalContainer form .inputGroup {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.modalContainer form .inputGroup + .inputGroup {
-  margin-left: 10px;
-}
-
-.modalContainer form .inputGroup label {
-  margin-bottom: 5px;
-}
-
-.modalContainer form .inputGroup input {
-  height: 40px;
-  border-radius: 8px;
-  border: 0;
-  padding: 0 10px;
-}
-
-.modalContainer form button {
-  margin-top: 4rem;
+  margin: 1rem 0;
 }

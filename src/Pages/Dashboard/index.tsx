@@ -1,11 +1,11 @@
 import Cards from "../../components/Cards";
-import { DashboardContainer } from "./styles";
+import Layout from "../../components/Layout";
 
 const Dashboard = () => {
   return (
-    <DashboardContainer>
+    <Layout>
       <Cards />
-    </DashboardContainer>
+    </Layout>
   );
 };
 

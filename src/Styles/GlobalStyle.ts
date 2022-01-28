@@ -16,15 +16,6 @@ export const GlobalStyle = createGlobalStyle`
     --title-color: #3D3D4D;
   }
 
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    height: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
-
   h1, h2 {
     font-family: 'Poppins', sans-serif;
   }

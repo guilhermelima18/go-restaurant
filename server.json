@@ -27,28 +27,52 @@
   ],
   "foods": [
     {
-      "id": 1,
-      "name": "Ao molho",
-      "description": "Macarrão ao molho branco, fughi e cheiro verde das montanhas.",
+      "name": "Moda da Casa",
+      "description": "Moda da casa com muito carinho.",
+      "price": "34",
+      "available": true,
+      "image": "https://cdn.pixabay.com/photo/2020/06/08/16/49/pizza-5275191_960_720.jpg",
+      "id": 1
+    },
+    {
+      "name": "Moda da Francesa",
+      "description": "Pizza Francesa.",
+      "price": "60",
+      "available": true,
+      "image": "https://cdn.pixabay.com/photo/2017/02/15/10/57/pizza-2068272_960_720.jpg",
+      "id": 2
+    },
+    {
+      "name": "Moda Italiana",
+      "description": "Diretamente da Itália.",
+      "price": "35",
+      "available": true,
+      "image": "https://cdn.pixabay.com/photo/2017/12/10/14/47/pizza-3010062_960_720.jpg",
+      "id": 3
+    },
+    {
+      "name": "Moda Carne Moída",
+      "description": "Pizza de carne moída com catupiry.",
+      "price": "24.90",
+      "available": true,
+      "image": "https://cdn.pixabay.com/photo/2017/09/30/15/10/plate-2802332_960_720.jpg",
+      "id": 4
+    },
+    {
+      "name": "Moda Exemplo",
+      "description": "Pizza de exemplo",
       "price": "19.90",
       "available": true,
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png"
+      "image": "https://cdn.pixabay.com/photo/2016/03/05/21/45/pizza-1239077_960_720.jpg",
+      "id": 5
     },
     {
-      "id": 2,
-      "name": "Veggie",
-      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
-      "price": "21.90",
+      "name": "Moda Caseira",
+      "image": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg",
+      "price": "44.90",
+      "description": "Pizza caseira da nossa casa para a sua.",
       "available": true,
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
-    },
-    {
-      "id": 3,
-      "name": "A la Camarón",
-      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
-      "price": "25.90",
-      "available": true,
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+      "id": 6
     }
   ]
 }
