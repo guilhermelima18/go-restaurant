@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { AiOutlineEdit } from "react-icons/ai";
-import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../../store/CartContext";
+import { AiOutlineEdit } from "react-icons/ai";
+import {
+  IoIosRemoveCircleOutline,
+  IoIosAddCircleOutline,
+} from "react-icons/io";
 import { formatPrice } from "../../../utils/format";
 import Button from "../../Button";
 import EditProductModal from "../../EditProductModal";
@@ -10,7 +14,7 @@ import { CardContainer, CardContent, CardFooter } from "./styles";
 interface FoodsProps {
   id: number;
   name: string;
-  price: string;
+  price?: string;
   image: string;
   description: string;
   available: boolean;
@@ -22,8 +26,13 @@ type Foods = {
 };
 
 const Card = ({ foods }: Foods) => {
+  const { addProduct } = useCart();
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function handleAddProduct(id: number) {
+    addProduct(id);
+  }
 
   return (
     <>
@@ -50,6 +59,9 @@ const Card = ({ foods }: Foods) => {
                 </Button>
                 <Button>
                   <IoIosRemoveCircleOutline fontSize={20} />
+                </Button>
+                <Button onClick={() => handleAddProduct(id)}>
+                  <IoIosAddCircleOutline fontSize={20} />
                 </Button>
               </div>
               <span style={{ color: available ? "#39B100" : "#C72828" }}>

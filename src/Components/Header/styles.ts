@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   background-color: var(--header-background);
   width: 100%;
-  padding: 2rem 2rem 10rem;
 `;
 
 export const NavContainer = styled.nav`
@@ -11,7 +10,9 @@ export const NavContainer = styled.nav`
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  padding: 1rem 0;
 `;
 
 export const LogoContent = styled.div`
@@ -34,6 +35,17 @@ export const TitleContent = styled.div`
   p {
     color: white;
     opacity: 0.8;
+    font-size: 1rem;
+  }
+`;
+
+export const NavMenu = styled.div`
+  display: flex;
+  gap: 20px;
+
+  a {
+    color: white;
+    font-weight: bold;
     font-size: 1rem;
   }
 `;
