@@ -21,15 +21,13 @@ export const TableContainer = styled.table`
   text-align: center;
 
   thead tr th {
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 7px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
     padding: 1rem 0;
   }
 
   tbody tr td {
     width: 200px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 7px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
     padding: 1rem 0;
 
     img {

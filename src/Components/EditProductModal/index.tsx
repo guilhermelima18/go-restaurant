@@ -86,7 +86,7 @@ const EditProductModal = ({
   if (!modalIsOpen) return null;
 
   return (
-    <div className={modalIsOpen ? styles.modalContainer : styles.modalDisabled}>
+    <div className={styles.modalContainer}>
       <Form text="Editar Prato" onSubmit={handleSubmit}>
         <InputGroup
           typeInput="text"

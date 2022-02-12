@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import api from "../services/api";
 
 interface CartProviderProps {
@@ -18,11 +20,14 @@ interface AddFoodToCart {
 interface CartContextData {
   cart: AddFoodToCart[];
   addProduct: (id: number) => Promise<void>;
+  removeProduct: (id: number) => void;
+  finalizeOrder: () => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps) {
+  const navigate = useNavigate();
   const [cart, setCart] = useState<AddFoodToCart[]>(() => {
     const getStorage = localStorage.getItem("@go-restaurant:pizzas");
 
@@ -55,14 +60,35 @@ export function CartProvider({ children }: CartProviderProps) {
 
       localStorage.setItem("@go-restaurant:pizzas", JSON.stringify(product));
     } catch (err) {
-      console.log(err);
+      toast.error("Erro na remoção do produto " + err);
     }
   };
 
-  console.log(cart);
+  const removeProduct = (id: number) => {
+    try {
+      const removeToCart = cart.findIndex((item) => item.id === id);
+
+      cart.splice(removeToCart, 1);
+
+      localStorage.setItem("@go-restaurant:pizzas", JSON.stringify(cart));
+
+      navigate("/requests");
+    } catch (err) {
+      toast.error("Erro na remoção do produto " + err);
+    }
+
+    console.log(cart);
+  };
+
+  function finalizeOrder() {
+    localStorage.removeItem("@go-restaurant:pizzas");
+    window.location.reload();
+  }
 
   return (
-    <CartContext.Provider value={{ cart, addProduct }}>
+    <CartContext.Provider
+      value={{ cart, addProduct, removeProduct, finalizeOrder }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../store/CartContext";
+import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
-import {
-  IoIosRemoveCircleOutline,
-  IoIosAddCircleOutline,
-} from "react-icons/io";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
+import { BsCartPlus } from "react-icons/bs";
 import { formatPrice } from "../../../utils/format";
 import Button from "../../Button";
 import EditProductModal from "../../EditProductModal";
+import RemoveProductModal from "../../RemoveProductModal";
 import { CardContainer, CardContent, CardFooter } from "./styles";
 
 interface FoodsProps {
@@ -28,10 +28,12 @@ type Foods = {
 const Card = ({ foods }: Foods) => {
   const { addProduct } = useCart();
   const navigate = useNavigate();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
+  const [modalRemoveIsOpen, setModalRemoveIsOpen] = useState(false);
 
   function handleAddProduct(id: number) {
     addProduct(id);
+    toast.success("Produto adicionado com sucesso!");
   }
 
   return (
@@ -50,18 +52,25 @@ const Card = ({ foods }: Foods) => {
             <CardFooter>
               <div>
                 <Button
+                  color="blue"
                   onClick={() => {
                     navigate(`/edit-product/${id}`);
-                    setModalIsOpen(true);
+                    setModalEditIsOpen(true);
                   }}
                 >
-                  <AiOutlineEdit fontSize={20} />
+                  <AiOutlineEdit fontSize={20} color="white" />
                 </Button>
-                <Button>
-                  <IoIosRemoveCircleOutline fontSize={20} />
+                <Button
+                  color="#C72828"
+                  onClick={() => {
+                    navigate(`/remove-product/${id}`);
+                    setModalRemoveIsOpen(true);
+                  }}
+                >
+                  <IoIosRemoveCircleOutline fontSize={20} color="white" />
                 </Button>
-                <Button onClick={() => handleAddProduct(id)}>
-                  <IoIosAddCircleOutline fontSize={20} />
+                <Button color="green" onClick={() => handleAddProduct(id)}>
+                  <BsCartPlus fontSize={20} color="white" />
                 </Button>
               </div>
               <span style={{ color: available ? "#39B100" : "#C72828" }}>
@@ -71,10 +80,15 @@ const Card = ({ foods }: Foods) => {
           </CardContainer>
         )
       )}
-      <EditProductModal
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
-      />
+      {modalEditIsOpen && (
+        <EditProductModal
+          modalIsOpen={modalEditIsOpen}
+          setModalIsOpen={setModalEditIsOpen}
+        />
+      )}
+      {modalRemoveIsOpen && (
+        <RemoveProductModal setModalIsOpen={setModalRemoveIsOpen} />
+      )}
     </>
   );
 };

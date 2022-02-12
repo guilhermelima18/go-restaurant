@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Header from "../components/Header";
 import Dashboard from "../pages/Dashboard";
 import Requests from "../pages/Requests";
@@ -17,8 +18,10 @@ const AppRoutes = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/create-product" element={<Dashboard />} />
             <Route path="/edit-product/:id" element={<Dashboard />} />
+            <Route path="/remove-product/:id" element={<Dashboard />} />
             <Route path="/requests" element={<Requests />} />
           </Routes>
+          <ToastContainer autoClose={3000} />
         </ChangedFoods>
       </CartProvider>
     </BrowserRouter>
