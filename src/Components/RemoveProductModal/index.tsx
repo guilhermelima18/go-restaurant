@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useChangedFoods } from "../../contexts/GlobalContext";
+import { useProduct } from "../../hooks/useProduct";
 import { toast } from "react-toastify";
-import { useChangedFoods } from "../../store/GlobalContext";
 import { RiErrorWarningLine } from "react-icons/ri";
-import api from "../../services/api";
 import { ModalContainer, MainModal, ButtonClose } from "./styles";
 
 interface RemoveProductModalProps {
@@ -12,21 +12,20 @@ interface RemoveProductModalProps {
 
 const RemoveProductModal = ({ setModalIsOpen }: RemoveProductModalProps) => {
   const { id } = useParams();
+  const { removeProduct } = useProduct();
   const navigate = useNavigate();
   const { setHasChanged } = useChangedFoods();
 
-  async function removeProduct(id: number) {
-    if (id) {
-      try {
-        const response = await api.delete(`/foods/${id}`);
+  async function deleteProduct(id: number) {
+    setHasChanged(false);
 
-        if (response) {
-          setHasChanged(true);
-          navigate("/");
-        }
-      } catch (err) {
-        toast.error("Ocorreu um erro ao deletar o produto " + err);
-      }
+    if (id) {
+      await removeProduct(id);
+
+      toast.success("Produto deletado com sucesso.");
+
+      setHasChanged(true);
+      navigate("/");
     }
   }
 
@@ -40,7 +39,7 @@ const RemoveProductModal = ({ setModalIsOpen }: RemoveProductModalProps) => {
         <footer>
           <button
             onClick={() => {
-              removeProduct(Number(id));
+              deleteProduct(Number(id));
               setModalIsOpen(false);
             }}
           >

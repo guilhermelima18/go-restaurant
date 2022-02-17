@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     --card-background: #F0F0F5;
     --card-footer-background: #E4E4EB;
     --title-color: #3D3D4D;
+    --animationModal: modalEffect;
   }
 
   h1, h2 {
@@ -29,5 +30,15 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: #333;
     font-family: 'Roboto', sans-serif;
+  }
+
+  @keyframes modalEffect {
+    from {
+      transform: translateY(90px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
   }
 `;

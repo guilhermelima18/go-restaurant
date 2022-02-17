@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const DashboardContainer = styled.div`
-  background-color: red;
+export const NewPlateSection = styled.section`
   width: 100%;
-  margin-top: -80px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
 `;

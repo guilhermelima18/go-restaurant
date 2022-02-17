@@ -1,20 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import api from "../services/api";
+import { GET_FOOD } from "../services/api";
+import { AddFoodToCart } from "../types/Cart";
 
 interface CartProviderProps {
   children: ReactNode;
-}
-
-interface AddFoodToCart {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  available: boolean;
-  price: number;
-  quantity: number;
 }
 
 interface CartContextData {
@@ -47,7 +38,7 @@ export function CartProvider({ children }: CartProviderProps) {
       if (productExists) {
         productExists.quantity += 1;
       } else {
-        const response = await api.get(`/foods/${id}`);
+        const response = await GET_FOOD(String(id));
 
         const newProduct = {
           ...response.data,
@@ -76,8 +67,6 @@ export function CartProvider({ children }: CartProviderProps) {
     } catch (err) {
       toast.error("Erro na remoção do produto " + err);
     }
-
-    console.log(cart);
   };
 
   function finalizeOrder() {
@@ -94,8 +83,4 @@ export function CartProvider({ children }: CartProviderProps) {
   );
 }
 
-export function useCart(): CartContextData {
-  const context = useContext(CartContext);
-
-  return context;
-}
+export const useCart = (): CartContextData => useContext(CartContext);

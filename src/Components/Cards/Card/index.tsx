@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../../store/CartContext";
+import { useCart } from "../../../hooks/useCart";
 import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
 import { IoIosRemoveCircleOutline } from "react-icons/io";

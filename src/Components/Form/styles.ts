@@ -10,6 +10,8 @@ export const FormContainer = styled.form`
   padding: 2rem;
   border-radius: 10px;
 
+  animation: var(--animationModal) 2s;
+
   h1 {
     margin-bottom: 1.5rem;
     font-size: 2.5rem;

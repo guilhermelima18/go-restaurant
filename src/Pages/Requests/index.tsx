@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { useCart } from "../../store/CartContext";
+import { useCart } from "../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import { MainContent, TableContainer } from "./styles";
 import { formatPrice } from "../../utils/format";

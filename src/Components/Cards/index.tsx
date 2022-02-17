@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api";
-import { useChangedFoods } from "../../store/GlobalContext";
+import { GET_FOODS } from "../../services/api";
+import { useChangedFoods } from "../../contexts/GlobalContext";
 import Card from "./Card";
 import { CardsContainer, BoxFoodsNotFoundContainer } from "./styles";
 
@@ -28,7 +28,7 @@ const Cards = () => {
 
   useEffect(() => {
     const getFoods = async () => {
-      const response = await api.get("/foods");
+      const response = await GET_FOODS();
 
       if (response) {
         if (response.status === 200 && response.data) {

@@ -1,12 +1,13 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { AiFillPlusSquare } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
-import { useChangedFoods } from "../../store/GlobalContext";
-import styles from "../EditProductModal/styles.module.css";
+import { useChangedFoods } from "../../contexts/GlobalContext";
+import { useProduct } from "../../hooks/useProduct";
+import { toast } from "react-toastify";
+import { AiFillPlusSquare } from "react-icons/ai";
 import Form from "../Form";
 import InputGroup from "../InputGroup";
 import NewPlateButton from "../NewPlateButton";
+import styles from "../EditProductModal/styles.module.css";
 
 interface AddProductModalProps {
   modalIsOpen: boolean;
@@ -18,6 +19,7 @@ const AddProductModal = ({
   setModalIsOpen,
 }: AddProductModalProps) => {
   const { setHasChanged } = useChangedFoods();
+  const { addProduct } = useProduct();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -28,7 +30,7 @@ const AddProductModal = ({
     setHasChanged(false);
     event.preventDefault();
 
-    const params = {
+    const addProductParams = {
       name,
       image,
       price,
@@ -36,15 +38,13 @@ const AddProductModal = ({
       available: true,
     };
 
-    const response = await api.post("/foods", params);
+    await addProduct({ addProductParams });
 
-    if (response) {
-      if (response.status === 201) {
-        setHasChanged(true);
-        navigate("/");
-        setModalIsOpen(false);
-      }
-    }
+    toast.success("Produto adicionado com sucesso.");
+
+    setHasChanged(true);
+    setModalIsOpen(false);
+    navigate("/");
   };
 
   if (!modalIsOpen) return null;
@@ -67,7 +67,7 @@ const AddProductModal = ({
             nameInput="name"
             placeholderInput="Ex: Modal Italiana"
             value={name}
-            onChange={(event) => setName(event?.target.value)}
+            onChange={(event) => setName(event.target.value)}
           />
           <InputGroup
             typeInput="number"

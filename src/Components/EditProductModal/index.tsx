@@ -1,22 +1,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useChangedFoods } from "../../contexts/GlobalContext";
+import { useProduct } from "../../hooks/useProduct";
+import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
-import api from "../../services/api";
+import { GET_FOOD } from "../../services/api";
 import InputGroup from "../InputGroup";
 import NewPlateButton from "../NewPlateButton";
-import styles from "./styles.module.css";
 import Form from "../Form";
-import { useChangedFoods } from "../../store/GlobalContext";
-
-interface FoodEditModalProps {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-  description: string;
-  available: boolean;
-  priceFormatted: number;
-}
+import styles from "./styles.module.css";
 
 interface EditProductModalProps {
   modalIsOpen: boolean;
@@ -27,9 +19,10 @@ const EditProductModal = ({
   modalIsOpen,
   setModalIsOpen,
 }: EditProductModalProps) => {
+  const { id } = useParams();
+  const { editProduct } = useProduct();
   const { setHasChanged } = useChangedFoods();
   const navigate = useNavigate();
-  const { id } = useParams();
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -40,8 +33,8 @@ const EditProductModal = ({
 
   useEffect(() => {
     if (id) {
-      const editProduct = async () => {
-        const response = await api.get<FoodEditModalProps>(`/foods/${id}`);
+      const getProduct = async () => {
+        const response = await GET_FOOD(id);
 
         if (response) {
           if (response.status === 200 && response.data) {
@@ -56,7 +49,7 @@ const EditProductModal = ({
         }
       };
 
-      editProduct();
+      getProduct();
     }
   }, [id]);
 
@@ -64,19 +57,18 @@ const EditProductModal = ({
     setHasChanged(false);
     event.preventDefault();
 
-    const params = {
+    const editProductParams = {
+      id,
       ...form,
     };
 
-    const response = await api.put(`/foods/${id}`, params);
+    await editProduct({ editProductParams });
 
-    if (response) {
-      if (response.status === 200) {
-        setHasChanged(true);
-        setModalIsOpen(false);
-        navigate("/");
-      }
-    }
+    toast.success("Produto editado com sucesso.");
+
+    setHasChanged(true);
+    setModalIsOpen(false);
+    navigate("/");
   };
 
   const handleChange = (event: any) => {
