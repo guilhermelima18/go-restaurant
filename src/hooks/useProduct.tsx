@@ -1,16 +1,36 @@
-import { createContext, ReactNode, useContext } from "react";
+import {
+  createContext,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 import { toast } from "react-toastify";
-import { CREATE_FOOD, DELETE_FOOD, EDIT_FOOD } from "../services/api";
-import { AddProductProps, EditProductProps } from "../types/Product";
+import {
+  CREATE_FOOD,
+  DELETE_FOOD,
+  EDIT_FOOD,
+  GET_FOODS,
+} from "../services/api";
+import {
+  FoodsProps,
+  AddProductProps,
+  EditProductProps,
+} from "../types/Product";
 
 interface ProductProviderProps {
   children: ReactNode;
 }
 
 interface ProductContextData {
+  getProduct: () => Promise<void>;
   addProduct: (addProductParams: AddProductProps) => Promise<void>;
   editProduct: (editProductParams: EditProductProps) => Promise<void>;
   removeProduct: (id: number) => Promise<void>;
+  pageCurrent: number;
+  setPageCurrent: React.Dispatch<SetStateAction<number>>;
+  foods: FoodsProps[];
+  totalPages: string[];
 }
 
 const ProductContext = createContext<ProductContextData>(
@@ -18,6 +38,35 @@ const ProductContext = createContext<ProductContextData>(
 );
 
 export function ProductProvider({ children }: ProductProviderProps) {
+  const [foods, setFoods] = useState<FoodsProps[]>([]);
+  const [pageCurrent, setPageCurrent] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<string[]>([]);
+
+  const getProduct = async () => {
+    try {
+      const response = await GET_FOODS(pageCurrent);
+
+      const { link } = response.headers;
+
+      const numberPages = link.split(",");
+
+      setTotalPages([...numberPages]);
+
+      if (response) {
+        if (response.status === 200 && response.data) {
+          const foodsFormatted = response.data.map((food: FoodsProps) => ({
+            ...food,
+            priceFormatted: Number(food.price),
+          }));
+
+          setFoods(foodsFormatted);
+        }
+      }
+    } catch (err) {
+      toast.error("Erro ao buscar os produtos.");
+    }
+  };
+
   const addProduct = async ({ addProductParams }: AddProductProps) => {
     try {
       await CREATE_FOOD(addProductParams);
@@ -43,7 +92,18 @@ export function ProductProvider({ children }: ProductProviderProps) {
   };
 
   return (
-    <ProductContext.Provider value={{ addProduct, editProduct, removeProduct }}>
+    <ProductContext.Provider
+      value={{
+        getProduct,
+        addProduct,
+        editProduct,
+        removeProduct,
+        pageCurrent,
+        setPageCurrent,
+        foods,
+        totalPages,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );

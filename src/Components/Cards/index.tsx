@@ -1,58 +1,44 @@
-import { useEffect, useState } from "react";
-import { GET_FOODS } from "../../services/api";
-import { useChangedFoods } from "../../contexts/GlobalContext";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+import { useProduct } from "../../hooks/useProduct";
 import Card from "./Card";
+import { Pagination } from "../Pagination";
 import { CardsContainer, BoxFoodsNotFoundContainer } from "./styles";
-
-interface FoodsProps {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-  description: string;
-  available: boolean;
-  priceFormatted: number;
-}
+import { useChangedFoods } from "../../contexts/GlobalContext";
 
 const BoxFoodsNotFound = () => {
   return (
     <BoxFoodsNotFoundContainer>
-      <h1>Foods not found!</h1>
+      <h1>Ops... no more Pizzas!</h1>
     </BoxFoodsNotFoundContainer>
   );
 };
 
 const Cards = () => {
+  const { getProduct, foods, pageCurrent } = useProduct();
   const { hasChanged } = useChangedFoods();
-  const [foods, setFoods] = useState<FoodsProps[]>([]);
+
+  async function getFoods() {
+    await getProduct();
+  }
 
   useEffect(() => {
-    const getFoods = async () => {
-      const response = await GET_FOODS();
-
-      if (response) {
-        if (response.status === 200 && response.data) {
-          const foodsFormatted = response.data.map((food: FoodsProps) => ({
-            ...food,
-            priceFormatted: Number(food.price),
-          }));
-
-          setFoods(foodsFormatted);
-        }
-      }
-    };
-
-    getFoods();
-  }, [hasChanged]);
+    if (pageCurrent) {
+      getFoods();
+    }
+  }, [pageCurrent, hasChanged]);
 
   return (
     <>
       {foods.length === 0 ? (
         <BoxFoodsNotFound />
       ) : (
-        <CardsContainer>
-          <Card foods={foods} />
-        </CardsContainer>
+        <>
+          <CardsContainer>
+            <Card foods={foods} />
+          </CardsContainer>
+          <Pagination />
+        </>
       )}
     </>
   );

@@ -4,8 +4,9 @@ const api = axios.create({
   baseURL: "http://localhost:5000",
 });
 
-export const GET_FOODS = async () => {
-  const response = await api.get("/foods");
+export const GET_FOODS = async (pageCurrent: number) => {
+  console.log(pageCurrent);
+  const response = await api.get(`/foods?_page=${pageCurrent}&_limit=6`);
 
   return response;
 };

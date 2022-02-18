@@ -1,7 +1,23 @@
 {
   "foods": [
     {
+      "id": 1,
+      "name": "Veggie",
+      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
+      "price": "26.90",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+    },
+    {
       "id": 2,
+      "name": "A la Camarón",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "price": "36.70",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "id": 3,
       "name": "Veggie",
       "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
       "price": "29.90",
@@ -14,7 +30,71 @@
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
       "available": true,
-      "id": 3
+      "id": 4
+    },
+    {
+      "name": "A la Camarón",
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
+      "price": "32.50",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "available": true,
+      "id": 6
+    },
+    {
+      "name": "A la Camarón",
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
+      "price": "32.50",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "available": true,
+      "id": 8
+    },
+    {
+      "id": 9,
+      "name": "Veggie",
+      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
+      "price": "29.90",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+    },
+    {
+      "name": "A la Camarón",
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
+      "price": "32.50",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "available": true,
+      "id": 10
+    },
+    {
+      "id": 11,
+      "name": "Veggie",
+      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
+      "price": "29.90",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+    },
+    {
+      "name": "A la Camarón",
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
+      "price": "32.50",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "available": true,
+      "id": 12
+    },
+    {
+      "id": 13,
+      "name": "Veggie",
+      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
+      "price": "29.90",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+    },
+    {
+      "name": "A la Camarón",
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
+      "price": "32.50",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "available": true,
+      "id": 14
     }
   ]
 }

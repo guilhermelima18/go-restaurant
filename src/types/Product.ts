@@ -1,3 +1,13 @@
+export interface FoodsProps {
+  id: number;
+  name: string;
+  price: string;
+  image: string;
+  description: string;
+  available: boolean;
+  priceFormatted: number;
+}
+
 export interface AddProductProps {
   addProductParams: {
     name: string;
