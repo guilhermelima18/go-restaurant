@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import { useCart } from "../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import { MainContent, TableContainer } from "./styles";
-import { formatPrice } from "../../utils/format";
+import { FormatPrice } from "../../utils/FormatPrice";
 import Button from "../../components/Button";
 import NewPlateButton from "../../components/NewPlateButton";
 
@@ -43,7 +43,7 @@ const Requests = () => {
                     </td>
                     <td>{product.name}</td>
                     <td>{product.quantity}</td>
-                    <td>{formatPrice(product.price)}</td>
+                    <td>{FormatPrice(product.price)}</td>
                     <td>
                       <Button
                         color="#C72828"
@@ -65,7 +65,7 @@ const Requests = () => {
                 Finalizar pedido
               </NewPlateButton>
               <span>
-                Total: <strong>{formatPrice(totalOrder)}</strong>
+                Total: <strong>{FormatPrice(totalOrder)}</strong>
               </span>
             </footer>
           </>

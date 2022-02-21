@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logoIcon from "../../assets/logo-go-restaurant.svg";
+import AddProductModal from "../AddProductModal";
+import NewPlateButton from "../NewPlateButton";
 import {
   HeaderContainer,
   NavContainer,
@@ -9,6 +12,8 @@ import {
 } from "./styles";
 
 const Header = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <HeaderContainer>
       <NavContainer>
@@ -22,8 +27,17 @@ const Header = () => {
         <NavMenu>
           <Link to="/">Home</Link>
           <Link to="/requests">Pedidos</Link>
+          <NewPlateButton onClick={() => setModalIsOpen(true)}>
+            Adicione um novo prato
+          </NewPlateButton>
         </NavMenu>
       </NavContainer>
+      {modalIsOpen && (
+        <AddProductModal
+          modalIsOpen={modalIsOpen}
+          setModalIsOpen={setModalIsOpen}
+        />
+      )}
     </HeaderContainer>
   );
 };

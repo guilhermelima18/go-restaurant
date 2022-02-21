@@ -4,9 +4,14 @@ const api = axios.create({
   baseURL: "http://localhost:5000",
 });
 
-export const GET_FOODS = async (pageCurrent: number) => {
-  console.log(pageCurrent);
-  const response = await api.get(`/foods?_page=${pageCurrent}&_limit=6`);
+export const GET_FOODS = async (pageCurrent?: number, inputSearch?: string) => {
+  let response;
+
+  if (inputSearch !== undefined) {
+    response = await api.get(`/foods?name=${inputSearch}`);
+  } else {
+    response = await api.get(`/foods?_page=${pageCurrent}&_limit=6`);
+  }
 
   return response;
 };

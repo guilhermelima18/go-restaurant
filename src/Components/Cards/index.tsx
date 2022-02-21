@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useProduct } from "../../hooks/useProduct";
+import { useChangedFoods } from "../../contexts/GlobalContext";
 import Card from "./Card";
 import { Pagination } from "../Pagination";
 import { CardsContainer, BoxFoodsNotFoundContainer } from "./styles";
-import { useChangedFoods } from "../../contexts/GlobalContext";
 
 const BoxFoodsNotFound = () => {
   return (
@@ -37,7 +37,7 @@ const Cards = () => {
           <CardsContainer>
             <Card foods={foods} />
           </CardsContainer>
-          <Pagination />
+          {foods.length >= 6 && <Pagination />}
         </>
       )}
     </>

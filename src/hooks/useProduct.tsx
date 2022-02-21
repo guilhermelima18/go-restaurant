@@ -23,6 +23,7 @@ interface ProductProviderProps {
 }
 
 interface ProductContextData {
+  searchProduct: (inputSearch: string) => Promise<void>;
   getProduct: () => Promise<void>;
   addProduct: (addProductParams: AddProductProps) => Promise<void>;
   editProduct: (editProductParams: EditProductProps) => Promise<void>;
@@ -30,7 +31,7 @@ interface ProductContextData {
   pageCurrent: number;
   setPageCurrent: React.Dispatch<SetStateAction<number>>;
   foods: FoodsProps[];
-  totalPages: string[];
+  totalPages: number;
 }
 
 const ProductContext = createContext<ProductContextData>(
@@ -40,17 +41,36 @@ const ProductContext = createContext<ProductContextData>(
 export function ProductProvider({ children }: ProductProviderProps) {
   const [foods, setFoods] = useState<FoodsProps[]>([]);
   const [pageCurrent, setPageCurrent] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<string[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(0);
+
+  const searchProduct = async (inputSearch: string) => {
+    try {
+      const response = await GET_FOODS(undefined, inputSearch);
+
+      if (response) {
+        if (response.status === 200) {
+          const foodsFormatted = response.data.map((food: FoodsProps) => ({
+            ...food,
+            priceFormatted: Number(food.price),
+          }));
+
+          setFoods(foodsFormatted);
+        }
+      }
+    } catch (error) {
+      toast.error("Erro ao buscar os produtos.");
+    }
+  };
 
   const getProduct = async () => {
     try {
       const response = await GET_FOODS(pageCurrent);
 
-      const { link } = response.headers;
+      const { "x-total-count": totalCount } = response.headers;
 
-      const numberPages = link.split(",");
+      const numberPages = Math.ceil(Number(totalCount) / 6);
 
-      setTotalPages([...numberPages]);
+      setTotalPages(numberPages);
 
       if (response) {
         if (response.status === 200 && response.data) {
@@ -94,6 +114,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
   return (
     <ProductContext.Provider
       value={{
+        searchProduct,
         getProduct,
         addProduct,
         editProduct,

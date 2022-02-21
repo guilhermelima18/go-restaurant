@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { BsCartPlus } from "react-icons/bs";
-import { formatPrice } from "../../../utils/format";
+import { FormatPrice } from "../../../utils/FormatPrice";
 import Button from "../../Button";
 import EditProductModal from "../../EditProductModal";
 import RemoveProductModal from "../../RemoveProductModal";
@@ -46,7 +46,7 @@ const Card = ({ foods }: Foods) => {
               <h2>{name}</h2>
               <p>{description}</p>
               <h4>
-                <strong>{formatPrice(priceFormatted)}</strong>
+                <strong>{FormatPrice(priceFormatted)}</strong>
               </h4>
             </CardContent>
             <CardFooter>

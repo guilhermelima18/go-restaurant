@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   background-color: var(--header-background);
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
 `;
 
 export const NavContainer = styled.nav`
@@ -41,6 +45,7 @@ export const TitleContent = styled.div`
 
 export const NavMenu = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
 
   a {

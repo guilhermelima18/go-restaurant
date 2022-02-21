@@ -1,27 +1,32 @@
 import { useState } from "react";
-import AddProductModal from "../../components/AddProductModal";
+import { useProduct } from "../../hooks/useProduct";
 import Cards from "../../components/Cards";
+import { InputSearch } from "../../components/InputSearch";
 import Layout from "../../components/Layout";
-import NewPlateButton from "../../components/NewPlateButton";
-import { NewPlateSection } from "./styles";
+import { TextToUpper } from "../../utils/TextToUpper";
 
 const Dashboard = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { searchProduct } = useProduct();
+  const [foodSearch, setFoodSearch] = useState("");
+
+  async function handleOnSearchFoods(event: any) {
+    if (event.key === "Enter") {
+      const capitalText = TextToUpper(foodSearch);
+      await searchProduct(capitalText);
+
+      setFoodSearch("");
+    }
+  }
 
   return (
     <Layout>
-      <NewPlateSection>
-        <NewPlateButton onClick={() => setModalIsOpen(true)}>
-          Adicionar novo prato
-        </NewPlateButton>
-      </NewPlateSection>
+      <InputSearch
+        placeholder="Busque por uma pizza"
+        value={foodSearch}
+        onChange={(e) => setFoodSearch(e.target.value)}
+        onKeyPress={handleOnSearchFoods}
+      />
       <Cards />
-      {modalIsOpen && (
-        <AddProductModal
-          modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-        />
-      )}
     </Layout>
   );
 };

@@ -4,9 +4,9 @@ import Header from "../components/Header";
 import Dashboard from "../pages/Dashboard";
 import Requests from "../pages/Requests";
 import { CartProvider } from "../hooks/useCart";
+import { ProductProvider } from "../hooks/useProduct";
 import { ChangedFoods } from "../contexts/GlobalContext";
 import { GlobalStyle } from "../styles/GlobalStyle";
-import { ProductProvider } from "../hooks/useProduct";
 
 const AppRoutes = () => {
   return (

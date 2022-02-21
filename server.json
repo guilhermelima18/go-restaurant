@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
       "price": "36.70",
       "available": true,
@@ -25,7 +25,7 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
     },
     {
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
@@ -33,7 +33,7 @@
       "id": 4
     },
     {
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
@@ -41,7 +41,7 @@
       "id": 6
     },
     {
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
@@ -57,7 +57,7 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
     },
     {
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
@@ -73,7 +73,7 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
     },
     {
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
@@ -89,12 +89,20 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
     },
     {
-      "name": "A la Camarón",
+      "name": "A La Camarón",
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "price": "32.50",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
       "available": true,
       "id": 14
+    },
+    {
+      "name": "Pizza Italiana",
+      "image": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg",
+      "price": "45.90",
+      "description": "Moda Italiana direto de Roma.",
+      "available": true,
+      "id": 15
     }
   ]
 }

@@ -2,15 +2,17 @@ import { InputHTMLAttributes } from "react";
 import { InputGroupContainer } from "./styles";
 
 interface InputGroupProps extends InputHTMLAttributes<HTMLInputElement> {
-  labelText: string;
+  width?: string;
+  labelText?: string;
   typeInput: string;
-  nameInput: string;
+  nameInput?: string;
   placeholderInput?: string;
   valueInput?: string;
   onChangeInput?: () => void;
 }
 
 const InputGroup = ({
+  width,
   labelText,
   typeInput,
   nameInput,
@@ -28,6 +30,7 @@ const InputGroup = ({
         placeholder={placeholderInput}
         value={valueInput}
         onChange={onChangeInput}
+        style={{ width: `${width}` }}
         {...rest}
       />
     </InputGroupContainer>
