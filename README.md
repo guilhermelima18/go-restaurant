@@ -20,6 +20,10 @@
   <img alt="Go Restaurant" src="https://i.imgur.com/SJ2cFXg.png" width="100%">
 </p>
 
+<p align="center">
+  <img alt="Go Restaurant" src="https://i.imgur.com/IcwuVQM.png" width="100%">
+</p>
+
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
