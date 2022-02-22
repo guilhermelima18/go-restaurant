@@ -16,6 +16,7 @@ export const MainModal = styled.main`
   background-color: white;
   width: 50%;
   height: 50%;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,12 +26,15 @@ export const MainModal = styled.main`
     background-color: red;
     padding: 2rem 1rem;
     display: flex;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     align-items: center;
     justify-content: center;
   }
 
   h1 {
     text-align: center;
+    font-size: 1.2rem;
   }
 
   footer {
@@ -41,11 +45,7 @@ export const MainModal = styled.main`
     gap: 30px;
 
     button {
-      background-color: green;
-      width: 150px;
-      height: 35px;
-      border: 0;
-      outline: none;
+      width: 260px;
     }
   }
 `;

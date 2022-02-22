@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { GET_FOOD } from "../services/api";
@@ -10,6 +16,7 @@ interface CartProviderProps {
 
 interface CartContextData {
   cart: AddFoodToCart[];
+  setCart: React.Dispatch<SetStateAction<AddFoodToCart[]>>;
   addProduct: (id: number) => Promise<void>;
   removeProduct: (id: number) => void;
   finalizeOrder: () => void;
@@ -76,7 +83,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addProduct, removeProduct, finalizeOrder }}
+      value={{ cart, setCart, addProduct, removeProduct, finalizeOrder }}
     >
       {children}
     </CartContext.Provider>

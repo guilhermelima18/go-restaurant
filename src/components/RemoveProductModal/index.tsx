@@ -5,6 +5,7 @@ import { useProduct } from "../../hooks/useProduct";
 import { toast } from "react-toastify";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { ModalContainer, MainModal, ButtonClose } from "./styles";
+import Button from "../Button";
 
 interface RemoveProductModalProps {
   setModalIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -37,15 +38,22 @@ const RemoveProductModal = ({ setModalIsOpen }: RemoveProductModalProps) => {
         </header>
         <h1>Tem certeza que deseja deletar esse produto?</h1>
         <footer>
-          <button
+          <Button
+            bgColor="green"
+            color="white"
             onClick={() => {
               deleteProduct(Number(id));
               setModalIsOpen(false);
             }}
           >
             Sim
-          </button>
-          <button>Não</button>
+          </Button>
+          <Button
+            bgColor="transparent"
+            border="2px solid rgba(200, 200, 200, 0.8)"
+          >
+            Não
+          </Button>
         </footer>
         <ButtonClose
           type="submit"

@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem;
 `;
 
 export const NavContainer = styled.nav`
@@ -17,12 +17,22 @@ export const NavContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 70px;
+  }
 `;
 
 export const LogoContent = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 export const TitleContent = styled.div`
@@ -52,5 +62,10 @@ export const NavMenu = styled.div`
     color: white;
     font-weight: bold;
     font-size: 1rem;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+    justify-content: center;
   }
 `;

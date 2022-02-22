@@ -52,7 +52,7 @@ const Card = ({ foods }: Foods) => {
             <CardFooter>
               <div>
                 <Button
-                  color="blue"
+                  bgColor="blue"
                   onClick={() => {
                     navigate(`/edit-product/${id}`);
                     setModalEditIsOpen(true);
@@ -61,7 +61,7 @@ const Card = ({ foods }: Foods) => {
                   <AiOutlineEdit fontSize={20} color="white" />
                 </Button>
                 <Button
-                  color="#C72828"
+                  bgColor="#C72828"
                   onClick={() => {
                     navigate(`/remove-product/${id}`);
                     setModalRemoveIsOpen(true);
@@ -69,7 +69,7 @@ const Card = ({ foods }: Foods) => {
                 >
                   <IoIosRemoveCircleOutline fontSize={20} color="white" />
                 </Button>
-                <Button color="green" onClick={() => handleAddProduct(id)}>
+                <Button bgColor="green" onClick={() => handleAddProduct(id)}>
                   <BsCartPlus fontSize={20} color="white" />
                 </Button>
               </div>

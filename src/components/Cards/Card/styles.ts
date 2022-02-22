@@ -53,4 +53,9 @@ export const CardFooter = styled.footer`
     font-weight: bold;
     color: var(--button-background);
   }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: 30px;
+  }
 `;
